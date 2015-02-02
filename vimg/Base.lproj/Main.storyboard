@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="vimg" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,210 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfE-bN-FbA">
+                                <rect key="frame" x="250" y="463" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="112" id="Avm-Fh-uat"/>
+                                    <constraint firstAttribute="width" constant="112" id="lPe-bi-YI2"/>
+                                    <constraint firstAttribute="height" constant="100" id="v9h-mb-wbu"/>
+                                    <constraint firstAttribute="width" constant="100" id="ws6-mo-XLM"/>
+                                </constraints>
+                                <state key="normal" image="shoot-button.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Avm-Fh-uat"/>
+                                        <exclude reference="lPe-bi-YI2"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="cameraButtonWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Efj-99-vN9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYB-tU-MF1">
+                                <rect key="frame" x="16" y="488" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="0y9-Jy-Hng"/>
+                                    <constraint firstAttribute="height" constant="50" id="tFS-Pb-KrM"/>
+                                </constraints>
+                                <state key="normal" image="switch_camera-100.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="switchCameraButtonWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pVd-LN-v89"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="yfE-bN-FbA" secondAttribute="centerX" id="5ot-ME-MMK"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yfE-bN-FbA" secondAttribute="bottom" constant="37" id="8cP-MH-ucR"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yfE-bN-FbA" secondAttribute="bottom" constant="37" id="DJq-nD-5eb"/>
+                            <constraint firstAttribute="centerX" secondItem="yfE-bN-FbA" secondAttribute="centerX" id="LOb-37-4cb"/>
+                            <constraint firstItem="VYB-tU-MF1" firstAttribute="centerY" secondItem="yfE-bN-FbA" secondAttribute="centerY" id="b89-BR-IAF"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yfE-bN-FbA" secondAttribute="bottom" constant="36" id="bsJ-cp-XDj"/>
+                            <constraint firstAttribute="centerX" secondItem="yfE-bN-FbA" secondAttribute="centerX" id="okc-Yv-hKl"/>
+                            <constraint firstItem="VYB-tU-MF1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zCP-Z9-Jht"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5ot-ME-MMK"/>
+                                <exclude reference="okc-Yv-hKl"/>
+                                <exclude reference="8cP-MH-ucR"/>
+                                <exclude reference="bsJ-cp-XDj"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <segue destination="sQN-d3-mDL" kind="presentation" identifier="photoUploadSegue" id="9oR-K0-sfh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="458" y="546"/>
+        </scene>
+        <!--Photo Upload View Controller-->
+        <scene sceneID="fBL-P3-o09">
+            <objects>
+                <viewController id="sQN-d3-mDL" customClass="PhotoUploadViewController" customModule="vimg" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Nn-zd-O5j"/>
+                        <viewControllerLayoutGuide type="bottom" id="bJL-CI-ov2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iqf-wJ-84Q">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="r7v-E1-i0e">
+                                <rect key="frame" x="-4" y="20" width="608" height="580"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oY5-Vg-jXk">
+                                        <rect key="frame" x="253" y="521" width="102" height="51"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <state key="normal" title="Upload">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="uploadWasPressed:" destination="sQN-d3-mDL" eventType="touchUpInside" id="xTc-2X-3dd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DP6-Sx-ey1">
+                                        <rect key="frame" x="16" y="16" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="GCP-pJ-dVk"/>
+                                            <constraint firstAttribute="height" constant="50" id="h2J-CF-XbZ"/>
+                                            <constraint firstAttribute="width" constant="50" id="qfy-3f-hvn"/>
+                                            <constraint firstAttribute="width" constant="40" id="ugG-k7-tnE"/>
+                                        </constraints>
+                                        <state key="normal" image="delete_sign-100.png"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="h2J-CF-XbZ"/>
+                                                <exclude reference="ugG-k7-tnE"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="cancelWasPressed:" destination="sQN-d3-mDL" eventType="touchUpInside" id="njL-pW-quY"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vimg.co/2Mw5vD5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGy-Kq-Wlc">
+                                        <rect key="frame" x="0.0" y="279" width="608" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="3uf-Um-99M"/>
+                                            <constraint firstAttribute="width" constant="576" id="7XD-gT-OTf"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="576" id="G7Q-s0-3tF"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="500" id="OOT-uM-YDm"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="ecd-UM-UvB"/>
+                                            <constraint firstAttribute="height" constant="40" id="ks3-Lx-MMn"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="mR4-u5-lyI"/>
+                                            <constraint firstAttribute="height" constant="54" id="pMV-7D-qKr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="3uf-Um-99M"/>
+                                                <exclude reference="7XD-gT-OTf"/>
+                                                <exclude reference="G7Q-s0-3tF"/>
+                                                <exclude reference="OOT-uM-YDm"/>
+                                                <exclude reference="ecd-UM-UvB"/>
+                                                <exclude reference="ks3-Lx-MMn"/>
+                                                <exclude reference="mR4-u5-lyI"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="De0-ZS-f9S">
+                                        <rect key="frame" x="554" y="26" width="46" height="30"/>
+                                        <state key="normal" title="Rotate">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="rotateWasPressed:" destination="sQN-d3-mDL" eventType="touchUpInside" id="xPK-Dv-jSp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="oY5-Vg-jXk" secondAttribute="centerX" id="8ew-4u-Mrn"/>
+                                    <constraint firstItem="DP6-Sx-ey1" firstAttribute="leading" secondItem="r7v-E1-i0e" secondAttribute="leading" constant="50" id="Ba2-Eg-5ar"/>
+                                    <constraint firstAttribute="centerY" secondItem="dGy-Kq-Wlc" secondAttribute="centerY" constant="-8" id="D8x-G2-gt0"/>
+                                    <constraint firstAttribute="centerY" secondItem="dGy-Kq-Wlc" secondAttribute="centerY" constant="-16" id="LPW-aM-Q9U"/>
+                                    <constraint firstAttribute="bottom" secondItem="oY5-Vg-jXk" secondAttribute="bottom" constant="8" id="MgC-kH-61Q"/>
+                                    <constraint firstItem="dGy-Kq-Wlc" firstAttribute="leading" secondItem="r7v-E1-i0e" secondAttribute="leading" constant="16" id="Mk1-T1-we0"/>
+                                    <constraint firstItem="DP6-Sx-ey1" firstAttribute="leading" secondItem="r7v-E1-i0e" secondAttribute="leading" constant="16" id="SkW-Wl-pFT"/>
+                                    <constraint firstItem="De0-ZS-f9S" firstAttribute="centerY" secondItem="DP6-Sx-ey1" secondAttribute="centerY" id="VQr-8t-9yb"/>
+                                    <constraint firstAttribute="centerY" secondItem="dGy-Kq-Wlc" secondAttribute="centerY" constant="-9" id="Vgv-MJ-Rq5"/>
+                                    <constraint firstItem="dGy-Kq-Wlc" firstAttribute="leading" secondItem="r7v-E1-i0e" secondAttribute="leading" constant="16" id="Wly-MK-7Zj"/>
+                                    <constraint firstAttribute="centerY" secondItem="dGy-Kq-Wlc" secondAttribute="centerY" constant="-8" id="bkK-eR-YJi"/>
+                                    <constraint firstItem="dGy-Kq-Wlc" firstAttribute="leading" secondItem="r7v-E1-i0e" secondAttribute="leading" id="c6f-Ua-11F"/>
+                                    <constraint firstItem="DP6-Sx-ey1" firstAttribute="top" secondItem="r7v-E1-i0e" secondAttribute="top" constant="16" id="gBh-w0-SmA"/>
+                                    <constraint firstAttribute="trailing" secondItem="De0-ZS-f9S" secondAttribute="trailing" constant="8" id="gVn-G1-d9P"/>
+                                    <constraint firstAttribute="trailing" secondItem="dGy-Kq-Wlc" secondAttribute="trailing" id="mJy-ZJ-Fhv"/>
+                                    <constraint firstAttribute="trailing" secondItem="dGy-Kq-Wlc" secondAttribute="trailing" constant="16" id="mRH-V6-dCv"/>
+                                    <constraint firstItem="DP6-Sx-ey1" firstAttribute="top" secondItem="r7v-E1-i0e" secondAttribute="top" constant="16" id="w4o-81-2vf"/>
+                                    <constraint firstAttribute="trailing" secondItem="dGy-Kq-Wlc" secondAttribute="trailing" constant="16" id="zT3-Qm-7vi"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Ba2-Eg-5ar"/>
+                                        <exclude reference="w4o-81-2vf"/>
+                                        <exclude reference="D8x-G2-gt0"/>
+                                        <exclude reference="Mk1-T1-we0"/>
+                                        <exclude reference="Vgv-MJ-Rq5"/>
+                                        <exclude reference="Wly-MK-7Zj"/>
+                                        <exclude reference="bkK-eR-YJi"/>
+                                        <exclude reference="mRH-V6-dCv"/>
+                                        <exclude reference="zT3-Qm-7vi"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="r7v-E1-i0e" firstAttribute="leading" secondItem="iqf-wJ-84Q" secondAttribute="leadingMargin" constant="-20" id="0dB-Yo-mdg"/>
+                            <constraint firstItem="r7v-E1-i0e" firstAttribute="top" secondItem="2Nn-zd-O5j" secondAttribute="bottom" id="8p9-KX-uEn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="r7v-E1-i0e" secondAttribute="trailing" constant="-20" id="I0v-NE-tKO"/>
+                            <constraint firstItem="bJL-CI-ov2" firstAttribute="top" secondItem="r7v-E1-i0e" secondAttribute="bottom" id="LBe-mz-9X2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="photoView" destination="r7v-E1-i0e" id="0tZ-41-CT6"/>
+                        <outlet property="uploadButton" destination="oY5-Vg-jXk" id="Oaj-Zo-u0a"/>
+                        <outlet property="urlLabel" destination="dGy-Kq-Wlc" id="Xl4-VV-jSD"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="cancelPhotoUploadSegue" id="06c-0w-T1h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oAD-vJ-VZq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1421" y="659"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="delete_sign-100.png" width="100" height="100"/>
+        <image name="shoot-button.png" width="512" height="512"/>
+        <image name="switch_camera-100.png" width="100" height="100"/>
+    </resources>
 </document>
