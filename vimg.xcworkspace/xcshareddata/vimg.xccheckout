@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A80D285E-40BB-4896-A3E9-F2758D21A579</string>
+	<key>IDESourceControlProjectName</key>
+	<string>vimg</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>97888E48882F13D4513BBE902EACC2172913E296</key>
+		<string>github.com:ruigomeseu/vimg-ios.git</string>
+		<key>C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53</key>
+		<string>https://github.com/krzyzanowskim/CryptoSwift.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>vimg.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>97888E48882F13D4513BBE902EACC2172913E296</key>
+		<string>..</string>
+		<key>C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53</key>
+		<string>..CryptoSwift</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:ruigomeseu/vimg-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>97888E48882F13D4513BBE902EACC2172913E296</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>97888E48882F13D4513BBE902EACC2172913E296</string>
+			<key>IDESourceControlWCCName</key>
+			<string>vimg</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53</string>
+			<key>IDESourceControlWCCName</key>
+			<string>vimgCryptoSwift</string>
+		</dict>
+	</array>
+</dict>
+</plist>

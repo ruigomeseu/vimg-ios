@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FD69F8270E9C48D7EDDE5122"
-               BuildableName = "Alamofire.framework"
-               BlueprintName = "Pods-Alamofire"
+               BlueprintIdentifier = "63E3E725DE64ACC28F2B8B92"
+               BuildableName = "SwiftyJSON.framework"
+               BlueprintName = "Pods-SwiftyJSON"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

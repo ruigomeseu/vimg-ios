@@ -12,18 +12,23 @@ import AVFoundation
 import AssetsLibrary
 import Darwin
 import Alamofire
+import CryptoSwift
+import SwiftyJSON
+
 
 class PhotoUploadViewController: UIViewController {
     
     var capturedPhoto: UIImage?
     var rotatedPhoto: UIImage?
     var uuidString: NSString?
+    var cameraUsed: Int?
     
     @IBOutlet weak var urlLabel: UILabel!
     
     @IBOutlet weak var photoView: UIView!
     
     @IBOutlet weak var uploadButton: UIButton!
+    @IBOutlet weak var rotateButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,42 +37,100 @@ class PhotoUploadViewController: UIViewController {
         
         urlLabel.hidden = true
         
-        //rotatedPhoto = rotate(capturedPhoto!, orientation: UIImageOrientation.Left)
-        rotatedPhoto = UIImage(CGImage: capturedPhoto?.CGImage, scale: 1.0, orientation: UIImageOrientation.UpMirrored)
-     
+        rotatedPhoto = rotate(capturedPhoto!, orientation: UIImageOrientation.Left)
+        
+        if(cameraUsed == 1)
+        {
+            rotatedPhoto = rotatedPhoto?.imageRotatedByDegrees(0, flip: false)
+        }
+        
         photoView.layer.contents = rotatedPhoto!.CGImage
         
     }
     
     @IBAction func uploadWasPressed(sender: AnyObject) {
         uploadButton.enabled = false
+        rotateButton.enabled = false
         
-        var jpgImage: NSData = UIImageJPEGRepresentation(rotatedPhoto, CGFloat(0.7))
+        var jpgImage: NSData = UIImageJPEGRepresentation(rotatedPhoto, CGFloat(0.8))
+        
+        let stringToHash = "\(uuidString!)l3w1ld1mg"
+        println(stringToHash)
+        
+        
+        let hash = stringToHash.sha256()
+        println(hash!)
         
         let parameters = [
-            "device_id": String(uuidString!)
+            "device_id": String(uuidString!),
+            "device_hash": hash!
         ]
         
-        let urlRequest = urlRequestWithComponents("http://vimg.co/images", parameters: parameters, imageData: jpgImage)
+        self.urlLabel.hidden = false
+        self.urlLabel.text = "Uploading.."
+        self.urlLabel.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+        
+        let urlRequest = urlRequestWithComponents("http://vimg.co/images/", parameters: parameters, imageData: jpgImage)
         
         Alamofire.upload(urlRequest.0, urlRequest.1)
             .progress { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
+                
+                let progressPercent = (100 * totalBytesWritten) / totalBytesExpectedToWrite
+                
                 println("\(totalBytesWritten) / \(totalBytesExpectedToWrite)")
+                println(progressPercent)
             }
             .responseJSON { (request, response, json, error) in
-                if(error === nil) {
+                println(request)
+                if(error === nil && json !== nil) {
+                    var json = JSON(json!)
                     println(json)
-                    var id: String = String(json!.valueForKey("id") as NSString)
+                    if(json["success"])
+                    {
+                        var id: String! = json["id"].string
+                        
+                        self.urlLabel.text = "vimg.co/\(id)"
+                    } else {
+                        self.failedUpload()
+                        println(response)
+                        println(json)
+                        println(error)
+                    }
                     
-                    self.urlLabel.hidden = false
-                    self.urlLabel.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
-                    self.urlLabel.text = "vimg.co/\(id)"
+                } else {
+                    self.failedUpload()
+                    println(response)
+                    println(json)
+                    println(error)
                 }
         }
         
         
         
     }
+    
+    
+    func failedUpload() {
+        self.urlLabel.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.6)
+        self.urlLabel.text = ":("
+        
+        let alertController = UIAlertController(title: "Upload failed", message: "Please try again later", preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+        }
+        alertController.addAction(cancelAction)
+        self.presentViewController(alertController, animated: true) {
+        }
+        
+    }
+    
+    @IBAction func rotateWasPressed(sender: AnyObject) {
+        rotatedPhoto = rotatedPhoto?.imageRotatedByDegrees(-90.0, flip: true)
+        
+        photoView.layer.contents = rotatedPhoto!.CGImage
+        
+    }
+    
     
     @IBAction func cancelWasPressed(sender: AnyObject) {
         self.performSegueWithIdentifier("cancelPhotoUploadSegue", sender: self)
@@ -79,8 +142,6 @@ class PhotoUploadViewController: UIViewController {
     
     func rotate(source: UIImage, orientation: UIImageOrientation) -> UIImage {
         UIGraphicsBeginImageContext(source.size)
-        
-        println(radians(90.0))
         
         var context: CGContextRef = UIGraphicsGetCurrentContext()
         

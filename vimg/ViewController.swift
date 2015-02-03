@@ -99,6 +99,7 @@ class ViewController: UIViewController {
             let viewController = segue.destinationViewController as PhotoUploadViewController
             viewController.capturedPhoto = self.capturedPhoto
             viewController.uuidString = self.uuidString
+            viewController.cameraUsed = self.cameraInUse
         }
     }
     

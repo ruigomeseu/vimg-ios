@@ -92,7 +92,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="r7v-E1-i0e">
+                            <view autoresizesSubviews="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="r7v-E1-i0e">
                                 <rect key="frame" x="-4" y="20" width="608" height="580"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oY5-Vg-jXk">
@@ -151,13 +151,17 @@
                                             </mask>
                                         </variation>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="De0-ZS-f9S">
-                                        <rect key="frame" x="554" y="26" width="46" height="30"/>
-                                        <state key="normal" title="Rotate">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="De0-ZS-f9S">
+                                        <rect key="frame" x="542" y="16" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="CUO-eK-36R"/>
+                                            <constraint firstAttribute="width" constant="50" id="MfL-FI-xOk"/>
+                                        </constraints>
+                                        <state key="normal" image="rotate_left-100.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="rotateWasPressed:" destination="sQN-d3-mDL" eventType="touchUpInside" id="xPK-Dv-jSp"/>
+                                            <action selector="rotateWasPressed:" destination="sQN-d3-mDL" eventType="touchUpInside" id="ytO-fa-oVJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -176,7 +180,8 @@
                                     <constraint firstAttribute="centerY" secondItem="dGy-Kq-Wlc" secondAttribute="centerY" constant="-8" id="bkK-eR-YJi"/>
                                     <constraint firstItem="dGy-Kq-Wlc" firstAttribute="leading" secondItem="r7v-E1-i0e" secondAttribute="leading" id="c6f-Ua-11F"/>
                                     <constraint firstItem="DP6-Sx-ey1" firstAttribute="top" secondItem="r7v-E1-i0e" secondAttribute="top" constant="16" id="gBh-w0-SmA"/>
-                                    <constraint firstAttribute="trailing" secondItem="De0-ZS-f9S" secondAttribute="trailing" constant="8" id="gVn-G1-d9P"/>
+                                    <constraint firstAttribute="trailing" secondItem="De0-ZS-f9S" secondAttribute="trailing" constant="16" id="gVn-G1-d9P"/>
+                                    <constraint firstAttribute="trailing" secondItem="De0-ZS-f9S" secondAttribute="trailing" constant="16" id="l4s-AF-GaY"/>
                                     <constraint firstAttribute="trailing" secondItem="dGy-Kq-Wlc" secondAttribute="trailing" id="mJy-ZJ-Fhv"/>
                                     <constraint firstAttribute="trailing" secondItem="dGy-Kq-Wlc" secondAttribute="trailing" constant="16" id="mRH-V6-dCv"/>
                                     <constraint firstItem="DP6-Sx-ey1" firstAttribute="top" secondItem="r7v-E1-i0e" secondAttribute="top" constant="16" id="w4o-81-2vf"/>
@@ -193,6 +198,7 @@
                                         <exclude reference="bkK-eR-YJi"/>
                                         <exclude reference="mRH-V6-dCv"/>
                                         <exclude reference="zT3-Qm-7vi"/>
+                                        <exclude reference="gVn-G1-d9P"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -207,6 +213,7 @@
                     </view>
                     <connections>
                         <outlet property="photoView" destination="r7v-E1-i0e" id="0tZ-41-CT6"/>
+                        <outlet property="rotateButton" destination="De0-ZS-f9S" id="Fro-vR-dId"/>
                         <outlet property="uploadButton" destination="oY5-Vg-jXk" id="Oaj-Zo-u0a"/>
                         <outlet property="urlLabel" destination="dGy-Kq-Wlc" id="Xl4-VV-jSD"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="cancelPhotoUploadSegue" id="06c-0w-T1h"/>
@@ -219,6 +226,7 @@
     </scenes>
     <resources>
         <image name="delete_sign-100.png" width="100" height="100"/>
+        <image name="rotate_left-100.png" width="100" height="100"/>
         <image name="shoot-button.png" width="512" height="512"/>
         <image name="switch_camera-100.png" width="100" height="100"/>
     </resources>
